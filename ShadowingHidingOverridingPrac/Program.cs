@@ -8,6 +8,17 @@ namespace ShadowingHidingOverridingPrac
 {
     internal class Program
     {
+
+        class Parent
+        {
+            public int Variable = 273;
+        }
+        class Child : Parent 
+        {
+            public string Variable = "이칠삼";
+        }
+
+
         //Shadowing 예제
         public static int number = 10; //같은 이름의 지역변수에 의해 가려짐 (클래스 변수)
         public int number2 = 2;        //같은 이름의 지역변수에 의해 가려짐(인스턴스 변수)
@@ -18,6 +29,16 @@ namespace ShadowingHidingOverridingPrac
             Console.WriteLine(number); // 지역변수 number출력
             Console.WriteLine(Program.number); //이렇게 접근 가능
             Console.WriteLine((new Program()).number2); //인스턴스 변수인 경우는 이렇게..
+        }
+
+        void dosomething()
+        {
+            int number2 = 3;
+            Console.WriteLine(number); 
+            Console.WriteLine(Program.number); 
+
+
+
         }
     }
 }
