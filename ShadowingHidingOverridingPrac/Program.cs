@@ -12,10 +12,28 @@ namespace ShadowingHidingOverridingPrac
         class Parent
         {
             public int Variable = 273;
+
+            public void Method()
+            {
+                Console.WriteLine("어흥");
+            }
+
+            public virtual void Method2()
+            {
+                Console.WriteLine("어흥흥");
+            }
         }
         class Child : Parent 
         {
-            public string Variable = "이칠삼";
+            public new string Variable = "이칠삼";
+            public new void Method()
+            {
+                Console.WriteLine("야옹");
+            }
+            public override void Method2()
+            {
+                Console.WriteLine("야옹야옹");
+            }
         }
 
 
@@ -28,16 +46,28 @@ namespace ShadowingHidingOverridingPrac
             int number2 = 3;
             Console.WriteLine(number); // 지역변수 number출력
             Console.WriteLine(Program.number); //이렇게 접근 가능
-            Console.WriteLine((new Program()).number2); //인스턴스 변수인 경우는 이렇게..
+
+
+            Child child = new Child();
+            Console.WriteLine(child.Variable);
+
+            Parent p = child;
+            Console.WriteLine(p.Variable);
+
+            child.Method();
+            p.Method(); 
+
+            child.Method2(); 
+            p.Method2();
         }
 
         void dosomething()
         {
             int number2 = 3;
             Console.WriteLine(number); 
-            Console.WriteLine(Program.number); 
+            Console.WriteLine(this.number2); 
 
-
+            
 
         }
     }
